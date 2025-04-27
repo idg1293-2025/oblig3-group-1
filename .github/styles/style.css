@@ -18,11 +18,22 @@ body {
   background: grey;
 }
 
+.sol {
+  position: relative;
+  z-index: 3;
+  width: 20%;
+  margin-bottom: -25%;
+  left: 38%;
+}
+
 .himmel {
+  position: relative;
   z-index: 1;
 }
 
 .bakke {
-  z-index: 2;
+  position: relative;
+  z-index: 3;
+  margin-top: -15%;
 }
 /*# sourceMappingURL=style.css.map */

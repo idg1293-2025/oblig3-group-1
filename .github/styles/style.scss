@@ -2,9 +2,9 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  .section {
+}
+
+.section {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,18 +13,27 @@ body {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-  
+
     &:nth-child(even) {
-      background: grey;
+        background: grey;
     }
-  }
+}
 
-  .himmel{
+.sol {
+    position: relative;
+    z-index: 3;
+    width: 20%;
+    margin-bottom: -25%;
+    left: 38%;
+}
+
+.himmel {
+    position: relative;
     z-index: 1;
+}
 
-  }
-
-  .bakke{
-
-z-index: 2;
-  }
+.bakke {
+    position: relative;
+    z-index: 3;
+    margin-top: -15%;
+}
