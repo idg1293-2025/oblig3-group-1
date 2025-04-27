@@ -1,0 +1,2 @@
+body{font-family:sans-serif;margin:0;padding:0}.section{height:100vh;display:flex;justify-content:center;align-items:center;font-size:2rem;opacity:0;transform:translateY(50px);transition:opacity .3s ease,transform .3s ease}.section:nth-child(even){background:gray}
+/*# sourceMappingURL=style.min.css.map */
