@@ -17,4 +17,12 @@ body {
 .section:nth-child(even) {
   background: grey;
 }
+
+.himmel {
+  z-index: 1;
+}
+
+.bakke {
+  z-index: 2;
+}
 /*# sourceMappingURL=style.css.map */
