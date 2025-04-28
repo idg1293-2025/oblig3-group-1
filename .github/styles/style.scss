@@ -126,8 +126,8 @@ body {
   }
   
   @keyframes sway {
-    0%, 100% { transform: rotate(-15deg); } /* Left position */
-    50% { transform: rotate(15deg); } /* Right position */
+    0%, 100% { transform: rotate(-10deg); } /* Left position */
+    50% { transform: rotate(10deg); } /* Right position */
   }
 
   .sene3 {
@@ -175,21 +175,7 @@ body {
     left: 43%;
   }
 
-  #young path[fill="#a0d18a"] {
-    transform-origin: 50% 100%;
-    animation: leafSway 3s infinite ease-in-out alternate;
-  }
   
-  /* Create variation between leaves */
-  #young path[fill="#a0d18a"]:nth-child(odd) {
-    animation-delay: 0.5s;
-    animation-direction: alternate-reverse;
-  }
-  
-  @keyframes leafSway {
-    from { transform: rotate(-8deg); }
-    to { transform: rotate(8deg); }
-  }
 
   .sene4 {
     position: absolute;
@@ -234,8 +220,15 @@ body {
     height: auto;
     bottom: 10%;
     left: 40%;
+    position: absolute;
+    transform-origin: 50% 100%; /* Pivot at bottom center */
+    animation: gentle-sway 4s infinite ease-in-out;
   }
 
+  @keyframes gentle-sway {
+    0%, 100% { transform: rotate(-2deg); } /* Reduced from 15° to 5° */
+    50% { transform: rotate(2deg); }       /* Reduced from 15° to 5° */
+}
 
   .sene5 {
     position: absolute;
@@ -294,7 +287,10 @@ body {
     height: auto;
     bottom: 10%;
     left: 35%;
+    
   }
+
+  
 
 
   

@@ -34,6 +34,41 @@ gsap.to("#seed", {
   ease: "sine.inOut"
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Get the young plant container
+  const youngPlant = document.getElementById("young");
+  
+  // Get ALL paths inside it (then filter by color if needed)
+  const allPaths = youngPlant.querySelectorAll("path");
+  
+  // Filter only green leaves (or use all paths for testing)
+  const leaves = Array.from(allPaths).filter(path => 
+    path.getAttribute("fill") === "#a0d18a" || 
+    path.style.fill === "rgb(160, 209, 138)"
+  );
+
+  console.log(`Found ${leaves.length} leaves to animate`); // Debug count
+
+  // Animate each leaf
+  leaves.forEach((leaf, index) => {
+
+    // Set transform origin to leaf base
+    gsap.set(leaf, { 
+      transformOrigin: "50% 100%",
+      rotation: index % 2 ? -2 : 2 // Small initial rotation
+    });
+
+    // Create unique sway animation
+    gsap.to(leaf, {
+      rotation: index % 2 ? 5 : -5, // Alternate directions
+      duration: 2 + Math.random() * 2, // 2-4 seconds
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: index * 0.1
+    });
+  });
+});
 
 
 document.getElementById('evil').addEventListener('click', function () {
