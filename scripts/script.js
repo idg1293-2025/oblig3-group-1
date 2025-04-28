@@ -1,26 +1,49 @@
-// Activate the ScrollTrigger plugin so we can use it
-gsap.registerPlugin(ScrollTrigger);
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.info_section');
+  const startInstruction = document.querySelector('.start-instruction');
+  let currentIndex = 0;
+  const totalSections = sections.length;
+  let slideInterval = null;
+  let hasStarted = false;
 
-// Loop through every element with the class "section"
-gsap.utils.toArray(".info_section").forEach(section => {
-
-  // Loop through every element with the class "section"
-  gsap.to(section, {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    ease: "power2.out",
-
-    // ScrollTrigger handles when the animation happens based on scroll
-    scrollTrigger: {
-      trigger: section,
-      start: "top 80%", // Start the animation when the top of the section reaches 80% down the viewport
-      //end: "top 30%", //(Optional?) end point — only really used if you want animation tied to scrolling
-      toggleActions: "play none none none", 
-      // What to do when entering/leaving the trigger area:
-      // play on enter, do nothing on leave/back
-
-      markers: true, //shows marker on where start and end is. Removes later
+  function showNextSlide() {
+    if (currentIndex === totalSections - 1) {
+      clearInterval(slideInterval);
+      return;
     }
-  });
+
+    sections[currentIndex].classList.remove('active');
+
+    setTimeout(() => {
+      sections[currentIndex].style.display = "none";
+      currentIndex = (currentIndex + 1) % totalSections;
+      sections[currentIndex].style.display = "flex";
+      setTimeout(() => {
+        sections[currentIndex].classList.add('active');
+      }, 50);
+    }, 1000);
+  }
+
+  function startSlideshow() {
+    if (hasStarted) return;
+    hasStarted = true;
+
+    // Remove "Click anywhere to begin" text
+    if (startInstruction) {
+      startInstruction.style.display = 'none';
+    }
+
+    // Start slideshow
+    slideInterval = setInterval(showNextSlide, 7000);
+    showNextSlide();
+  }
+
+  // Show the first "Did you know?" section
+  sections[currentIndex].style.display = "flex";
+  setTimeout(() => {
+    sections[currentIndex].classList.add('active');
+  }, 50);
+
+  // Start slideshow on click
+  document.addEventListener('click', startSlideshow);
 });
