@@ -2,7 +2,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Loop through every element with the class "section"
-gsap.utils.toArray(".section").forEach(section => {
+gsap.utils.toArray(".info_section").forEach(section => {
 
   // Loop through every element with the class "section"
   gsap.to(section, {
