@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     path.style.fill === "rgb(160, 209, 138)"
   );
 
-  console.log(`Found ${leaves.length} leaves to animate`); // Debug count
+  console.log(`Found ${leaves.length} leaves to animate`); // Debug
 
   // Animate each leaf
   leaves.forEach((leaf, index) => {
@@ -55,13 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set transform origin to leaf base
     gsap.set(leaf, { 
       transformOrigin: "50% 100%",
-      rotation: index % 2 ? -2 : 2 // Small initial rotation
+      rotation: index % 2 ? -2 : 2 
     });
 
     // Create unique sway animation
     gsap.to(leaf, {
-      rotation: index % 2 ? 5 : -5, // Alternate directions
-      duration: 2 + Math.random() * 2, // 2-4 seconds
+      rotation: index % 2 ? 5 : -5, 
+      duration: 2 + Math.random() * 2,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
@@ -71,9 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Wait a frame to ensure SVG is fully loaded
+  // Wait a frame to ensure SVG is fully loaded
   requestAnimationFrame(() => {
-    // 2. Get leaves - multiple selector methods for reliability
     const leaves = document.querySelectorAll(`
       #adult path[fill='#a0d18a'],
       #adult path[style*='fill:#a0d18a'],
