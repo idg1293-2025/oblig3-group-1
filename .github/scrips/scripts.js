@@ -28,3 +28,4 @@ gsap.utils.toArray(".section").forEach(section => {
 document.getElementById('evil').addEventListener('click', function () {
   this.classList.add('walk'); // Adds the animation class
 });
+
