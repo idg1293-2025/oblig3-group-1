@@ -19,8 +19,6 @@ gsap.utils.toArray(".section").forEach(section => {
       toggleActions: "play none none none",
       // What to do when entering/leaving the trigger area:
       // play on enter, do nothing on leave/back
-
-      markers: true, //shows marker on where start and end is. Removes later
     }
   });
 });
