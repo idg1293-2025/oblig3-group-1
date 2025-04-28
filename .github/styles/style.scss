@@ -207,7 +207,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  height: 1vh;
   margin-top: 7%;
 }
 
@@ -248,14 +247,16 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  width: 90%; /* ✨ instead of 100%, give breathing room */
-  max-width: 1200px; /* ✨ prevent getting too stretched on large screens */
-  margin: 0 auto; /* ✨ center it horizontally */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 
+  // Scaling content on smaller screens
   p {
     flex: 0 0 60%;
     padding: 2%;
-    box-sizing: border-box; /* ✨ important: padding won't add overflow */
+    box-sizing: border-box;
+    font-size: 1.5rem; // Adjust font size for smaller screens
   }
 
   .info_image {
@@ -263,8 +264,8 @@ body {
     width: 100%;
     height: auto;
     padding: 2%;
-    box-sizing: border-box; /* ✨ important: prevent overflow */
-    object-fit: contain; /* ✨ makes sure the image fits nicely */
+    box-sizing: border-box;
+    object-fit: contain;
   }
 }
 
@@ -278,10 +279,15 @@ body {
   }
 
   .start-instruction {
+    cursor: pointer;
+    background: white;
+    color: black;
+    border-radius: 2rem;
     font-size: 1.5rem;
     opacity: 0.7;
     margin: 0;
     animation: blink 2s infinite;
+    padding: 10px 20px;
   }
 }
 
@@ -293,4 +299,50 @@ body {
 a, a:hover, a:visited {
   color: forestgreen;
   text-decoration: none;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+  .info_content {
+    gap: 1.5rem; // Less gap on smaller screens
+    padding: 5%; // Add some padding for better spacing
+  }
+
+  .info_section {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .info_content {
+    flex-direction: column; // Stack images and text on smaller screens
+    gap: 1rem;
+    width: 100%; // Take full width
+  }
+
+  .info_section {
+    font-size: 1.5rem; // Reduce text size
+  }
+
+  .info_image {
+    flex: 0 0 100%; // Let the image take full width in column mode
+  }
+
+  p {
+    flex: 0 0 100%; // Text also takes full width
+  }
+
+  .start-instruction {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info_section {
+    font-size: 1.2rem; // Smaller font size for very small screens
+  }
+
+  .start-instruction {
+    font-size: 1rem; // Even smaller font size for mobile devices
+  }
 }
