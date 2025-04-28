@@ -76,6 +76,10 @@ body {
   margin: 0;
 }
 .start_content .start-instruction {
+  cursor: pointer;
+  background: white;
+  color: black;
+  border-radius: 2rem;
   font-size: 1.5rem;
   opacity: 0.7;
   margin: 0;

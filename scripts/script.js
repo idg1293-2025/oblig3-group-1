@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.info_section');
   const startInstruction = document.querySelector('.start-instruction');
+  const startArea = document.querySelector('.start-instruction'); // Area to click on to start slideshow
   let currentIndex = 0;
   const totalSections = sections.length;
   let slideInterval = null;
@@ -44,6 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sections[currentIndex].classList.add('active');
   }, 50);
 
-  // Start slideshow on click
-  document.addEventListener('click', startSlideshow);
+  // Start slideshow when the specified area is clicked
+  startArea.addEventListener('click', startSlideshow);
 });
