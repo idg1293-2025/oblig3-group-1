@@ -25,6 +25,17 @@ gsap.utils.toArray(".section").forEach(section => {
   });
 });
 
+gsap.to("#seed", {
+  x: 5,
+  rotation: 5,
+  duration: 0.25,
+  repeat: -1, // Infinite
+  yoyo: true, // Alternate back and forth
+  ease: "sine.inOut"
+});
+
+
+
 document.getElementById('evil').addEventListener('click', function () {
   this.classList.add('walk'); // Adds the animation class
 });

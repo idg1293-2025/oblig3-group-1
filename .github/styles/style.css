@@ -118,8 +118,28 @@ body {
   height: auto;
   bottom: 10%;
   left: 45%;
+  transform-origin: 50% 100%; /* Pivot at bottom center */
+  -webkit-animation: sway 4s infinite ease-in-out;
+          animation: sway 4s infinite ease-in-out;
 }
 
+@-webkit-keyframes sway {
+  0%, 100% {
+    transform: rotate(-15deg);
+  } /* Left position */
+  50% {
+    transform: rotate(15deg);
+  } /* Right position */
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-15deg);
+  } /* Left position */
+  50% {
+    transform: rotate(15deg);
+  } /* Right position */
+}
 .sene3 {
   position: absolute;
 }
@@ -164,6 +184,36 @@ body {
   left: 43%;
 }
 
+#young path[fill="#a0d18a"] {
+  transform-origin: 50% 100%;
+  -webkit-animation: leafSway 3s infinite ease-in-out alternate;
+          animation: leafSway 3s infinite ease-in-out alternate;
+}
+
+/* Create variation between leaves */
+#young path[fill="#a0d18a"]:nth-child(odd) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  animation-direction: alternate-reverse;
+}
+
+@-webkit-keyframes leafSway {
+  from {
+    transform: rotate(-8deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes leafSway {
+  from {
+    transform: rotate(-8deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
 .sene4 {
   position: absolute;
 }
