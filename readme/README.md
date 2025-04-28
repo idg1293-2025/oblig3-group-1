@@ -33,3 +33,4 @@ we also have :
     GSAP Implicit Animation Observers
 
     github pages
+    https://idg1293-2025.github.io/oblig3-group-1/
