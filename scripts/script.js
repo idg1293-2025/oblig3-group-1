@@ -70,6 +70,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Wait a frame to ensure SVG is fully loaded
+  requestAnimationFrame(() => {
+    // 2. Get leaves - multiple selector methods for reliability
+    const leaves = document.querySelectorAll(`
+      #adult path[fill='#a0d18a'],
+      #adult path[style*='fill:#a0d18a'],
+      #adult path[style*='fill: rgb(160, 209, 138)']
+    `);
+
+    // 4. Animate each leaf
+    leaves.forEach((leaf, i) => {
+
+
+      // Reset transform properties
+      gsap.set(leaf, {
+        transformOrigin: "50% 100%",
+        rotation: 0,
+        scale: 1
+      });
+
+      // Create animation
+      gsap.to(leaf, {
+        duration: 3 + Math.random() * 2,
+        rotation: () => gsap.utils.random(-5, 5),
+        scale: () => gsap.utils.random(1, 1.05),
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: i * 0.2
+      });
+    });
+  });
+});
 
 document.getElementById('evil').addEventListener('click', function () {
   this.classList.add('walk'); // Adds the animation class
