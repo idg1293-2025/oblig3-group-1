@@ -19,43 +19,40 @@ body {
 .scene-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100dvh; /* Full viewport height */
 }
 
+/* ===== BASE SCENE SETUP ===== */
 .sene1, .sene2, .sene3, .sene4, .sene5, .sene7 {
   position: absolute;
 }
 
-/* Sky background - should cover entire container */
-#himmel {
+/* ===== SKY BACKGROUNDS ===== */
+#himmel, #himmel2, #himmel3, #himmel4, #himmel5, #himmel7 {
   z-index: 1;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  /* Secondary skies can be adjusted with individual classes */
 }
 
-/* Sun - positioned absolutely within container */
+#himmel2, #himmel3, #himmel4, #himmel5, #himmel7 {
+  top: 6%;
+}
+
+/* ===== SUN/MOON ELEMENTS ===== */
 #sol, #sol2, #sol3, #sol4, #sol5, #sol7 {
   z-index: 3;
-  width: 15%;
+  width: 15%; /* Relative to container */
   height: auto;
+  aspect-ratio: 1/1; /* Perfect circle */
   top: 10%;
   left: 38%;
-
   animation: expandContract 4s infinite ease-in-out;
 }
 
-@keyframes expandContract {
-  0%, 100% {
-      transform: scale(1); /* normal size */
-  }
-  50% {
-      transform: scale(1.2); /* expand */
-  }
-}
-
-/* Ground - positioned at bottom */
+/* ===== GROUND ELEMENTS ===== */
 #bakke {
   z-index: 2;
   width: 100%;
@@ -64,50 +61,33 @@ body {
   left: 0;
 }
 
-/* Trees - positioned above ground */
+#bakke2, #bakke3, #bakke4, #bakke5, #bakke7 {
+  @extend #bakke;
+  height: 25%;
+  bottom: 25%;
+}
+
+/* ===== VEGETATION ===== */
 #trees1, #trees12 {
-  z-index: 4; /* Above ground but below seeds */
+  z-index: 4;
   width: 90%;
   height: auto;
-  bottom: -8%; /* Align with top of ground */
+  bottom: -8%;
   left: 5%;
 }
 
-/* Seeds - positioned above everything */
+#trees2, #trees3, #trees4 {
+  @extend #trees1;
+}
+
+/* ===== CHARACTERS ===== */
+/* Seed */
 #seed {
   z-index: 5;
   width: 2%;
   height: auto;
-  bottom: 10%; /* Position above ground */
+  bottom: 10%;
   left: 45%;
-}
-
-/* Sky background */
-#himmel2, #himmel3, #himmel4, #himmel5, #himmel7 {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  top: 6%;
-  left: 0;
-}
-
-/* Ground */
-#bakke2, #bakke3, #bakke4, #bakke5, #bakke7 {
-  z-index: 2;
-  width: 100%;
-  height: 25%;
-  bottom: 25%;
-  left: 0;
-
-}
-
-/* Trees */
-#trees2 {
-  z-index: 4;
-  width: 90%;
-  height: auto;
-  bottom: -8%; /* Align with top of ground */
-  left: 5%;
 }
 
 /* Baby */
@@ -117,23 +97,11 @@ body {
   height: auto;
   bottom: 10%;
   left: 45%;
-  transform-origin: 50% 100%; /* Pivot at bottom center */
+  transform-origin: 50% 100%;
   animation: sway 4s infinite ease-in-out;
 }
 
-@keyframes sway {
-  0%, 100% { transform: rotate(-10deg); } /* Left position */
-  50% { transform: rotate(10deg); } /* Right position */
-}
-
-#trees3 {
-  z-index: 4;
-  width: 90%;
-  height: auto;
-  bottom: -8%;
-  left: 5%;
-}
-
+/* Young */
 #young {
   z-index: 5;
   width: 15%;
@@ -142,60 +110,96 @@ body {
   left: 43%;
 }
 
-#trees4 {
-  z-index: 4;
-  width: 90%;
-  height: auto;
-  bottom: -8%;
-  left: 5%;
-}
-
+/* Teen */
 #teen {
   z-index: 5;
   width: 20%;
   height: auto;
   bottom: 10%;
   left: 40%;
-  position: absolute;
-  transform-origin: 50% 100%; /* Pivot at bottom center */
+  transform-origin: 50% 100%;
   animation: gentle-sway 4s infinite ease-in-out;
 }
 
-@keyframes gentle-sway {
-  0%, 100% { transform: rotate(-2deg); } /* Reduced from 15° to 5° */
-  50% { transform: rotate(2deg); }       /* Reduced from 15° to 5° */
-}
-
-#evil {
-  z-index: 6;
-  width: 20%;
-  height: auto;
-  bottom: 10%;
-  left: 80%; /* Start position (right side) */
-  cursor: pointer;
-}
-#evil.walk {
-  animation: walk-in 3s forwards;
-}
-
-@keyframes walk-in {
-  0% {
-    left: 80%; /* Start off-screen right */
-    transform: rotateY(0deg); /* Facing right */
-  }
-  100% {
-    left: 53%; /* Stop at middle */
-  }
-}
-
+/* Adult */
 #adult, #adult2 {
   z-index: 5;
   width: 30%;
   height: auto;
   bottom: 10%;
   left: 35%;
-  
 }
+
+/* Evil Character */
+#evil {
+  z-index: 6;
+  width: 20%;
+  height: auto;
+  bottom: 10%;
+  left: 80%;
+  cursor: pointer;
+  
+  &.walk {
+    animation: walk-in 3s forwards;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes expandContract {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes gentle-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes walk-in {
+  0% { left: 80%; transform: rotateY(0deg); }
+  100% { left: 53%; }
+}
+
+/* ===== SPECIAL STATES ===== */
+#evil.walk {
+  animation: walk-in 3s forwards;
+  
+  /* To adjust final position: change 53vw in keyframes */
+}
+
+.sene7 h1 {
+  position: fixed; /* Changed from absolute to fixed for reliable centering */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+  width: 100%;
+  z-index: 100;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+  
+  /* Bounce animation */
+  animation: textBounce 2s infinite ease-in-out;
+}
+
+@keyframes textBounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1) translateY(-20px);
+  }
+}
+
 
 .sene6 {
   background: black;
