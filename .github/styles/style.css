@@ -292,12 +292,15 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 5%; /* Add horizontal padding */
 }
 .info_content p {
-  flex: 0 0 60%;
-  padding: 2%;
-  box-sizing: border-box;
-  font-size: 1.5rem;
+  -webkit-hyphens: auto;
+          hyphens: auto; /* Enable hyphenation where needed */
+  padding: 0.1rem; /* Increased padding */
+  margin: 0 2rem; /* Horizontal margin */
+  max-width: 100%; /* Ensure doesn't exceed container */
+  box-sizing: border-box; /* Include padding in width calc */
 }
 .info_content .info_image {
   flex: 0 0 60%;
