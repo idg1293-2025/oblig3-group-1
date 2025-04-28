@@ -37,7 +37,7 @@ body {
 }
 
 /* Sun - positioned absolutely within container */
-#sol, #sol2, #sol3, #sol4, #sol5 {
+#sol, #sol2, #sol3, #sol4, #sol5, #sol7 {
   z-index: 3;
   width: 15%;
   height: auto;
@@ -64,7 +64,7 @@ body {
 }
 
 /* Trees - positioned above ground */
-#trees1 {
+#trees1, #trees12 {
   z-index: 4; /* Above ground but below seeds */
   width: 90%;
   height: auto;
@@ -82,7 +82,7 @@ body {
 }
 
 /* Sky background */
-#himmel2, #himmel3, #himmel4, #himmel5 {
+#himmel2, #himmel3, #himmel4, #himmel5, #himmel7 {
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -91,7 +91,7 @@ body {
 }
 
 /* Ground */
-#bakke2, #bakke3, #bakke4, #bakke5 {
+#bakke2, #bakke3, #bakke4, #bakke5, #bakke7 {
   z-index: 2;
   width: 100%;
   height: 25%;
@@ -192,16 +192,12 @@ body {
     left: 53%; /* Stop at middle */
   }
 }
-#adult {
+#adult, #adult2 {
   z-index: 5;
   width: 30%;
   height: auto;
   bottom: 10%;
   left: 35%;
-}
-
-.sene7 {
-  background-color: black;
 }
 
 .sene6 {
@@ -210,6 +206,8 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  height: 1vh;
+  margin-top: 7%;
 }
 
 #slideshow {
@@ -247,23 +245,23 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  width: 90%; /* ✨ instead of 100%, give breathing room */
-  max-width: 1200px; /* ✨ prevent getting too stretched on large screens */
-  margin: 0 auto; /* ✨ center it horizontally */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .info_content p {
   flex: 0 0 60%;
   padding: 2%;
-  box-sizing: border-box; /* ✨ important: padding won't add overflow */
+  box-sizing: border-box;
 }
 .info_content .info_image {
   flex: 0 0 60%;
   width: 100%;
   height: auto;
   padding: 2%;
-  box-sizing: border-box; /* ✨ important: prevent overflow */
+  box-sizing: border-box;
   -o-object-fit: contain;
-     object-fit: contain; /* ✨ makes sure the image fits nicely */
+     object-fit: contain;
 }
 
 .start_content {
@@ -275,6 +273,10 @@ body {
   margin: 0;
 }
 .start_content .start-instruction {
+  cursor: pointer;
+  background: white;
+  color: black;
+  border-radius: 2rem;
   font-size: 1.5rem;
   opacity: 0.7;
   margin: 0;
