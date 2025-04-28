@@ -23,7 +23,7 @@ body {
   height: 100vh; /* Full viewport height */
 }
 
-.sene1 {
+.sene1, .sene2, .sene3, .sene4, .sene5, .sene7 {
   position: absolute;
 }
 
@@ -37,14 +37,33 @@ body {
 }
 
 /* Sun - positioned absolutely within container */
-#sol {
+#sol, #sol2, #sol3, #sol4, #sol5 {
   z-index: 3;
   width: 15%;
   height: auto;
   top: 10%;
   left: 38%;
+  -webkit-animation: expandContract 4s infinite ease-in-out;
+          animation: expandContract 4s infinite ease-in-out;
 }
 
+@-webkit-keyframes expandContract {
+  0%, 100% {
+    transform: scale(1); /* normal size */
+  }
+  50% {
+    transform: scale(1.2); /* expand */
+  }
+}
+
+@keyframes expandContract {
+  0%, 100% {
+    transform: scale(1); /* normal size */
+  }
+  50% {
+    transform: scale(1.2); /* expand */
+  }
+}
 /* Ground - positioned at bottom */
 #bakke {
   z-index: 2;
@@ -72,12 +91,8 @@ body {
   left: 45%;
 }
 
-.sene2 {
-  position: absolute;
-}
-
 /* Sky background */
-#himmel2 {
+#himmel2, #himmel3, #himmel4, #himmel5 {
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -85,17 +100,8 @@ body {
   left: 0;
 }
 
-/* Sun */
-#sol2 {
-  z-index: 3;
-  width: 15%;
-  height: auto;
-  top: 15%;
-  left: 40%;
-}
-
 /* Ground */
-#bakke2 {
+#bakke2, #bakke3, #bakke4, #bakke5 {
   z-index: 2;
   width: 100%;
   height: 25%;
@@ -141,34 +147,6 @@ body {
     transform: rotate(10deg);
   } /* Right position */
 }
-.sene3 {
-  position: absolute;
-}
-
-#himmel3 {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  top: 6%;
-  left: 0;
-}
-
-#sol3 {
-  z-index: 3;
-  width: 15%;
-  height: auto;
-  top: 15%;
-  left: 40%;
-}
-
-#bakke3 {
-  z-index: 2;
-  width: 100%;
-  height: 25%;
-  bottom: 25%;
-  left: 0;
-}
-
 #trees3 {
   z-index: 4;
   width: 90%;
@@ -183,34 +161,6 @@ body {
   height: auto;
   bottom: 10%;
   left: 43%;
-}
-
-.sene4 {
-  position: absolute;
-}
-
-#himmel4 {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  top: 6%;
-  left: 0;
-}
-
-#sol4 {
-  z-index: 3;
-  width: 15%;
-  height: auto;
-  top: 15%;
-  left: 40%;
-}
-
-#bakke4 {
-  z-index: 2;
-  width: 100%;
-  height: 25%;
-  bottom: 25%;
-  left: 0;
 }
 
 #trees4 {
@@ -250,34 +200,6 @@ body {
     transform: rotate(2deg);
   } /* Reduced from 15° to 5° */
 }
-.sene5 {
-  position: absolute;
-}
-
-#himmel5 {
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  top: 6%;
-  left: 0;
-}
-
-#sol5 {
-  z-index: 3;
-  width: 15%;
-  height: auto;
-  top: 15%;
-  left: 40%;
-}
-
-#bakke5 {
-  z-index: 2;
-  width: 100%;
-  height: 25%;
-  bottom: 25%;
-  left: 0;
-}
-
 #evil {
   z-index: 6;
   width: 20%;
@@ -317,5 +239,111 @@ body {
   height: auto;
   bottom: 10%;
   left: 35%;
+}
+
+.sene7 {
+  background-color: black;
+}
+
+.sene6 {
+  background: black;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 1vh;
+  margin-top: 7%;
+}
+
+#slideshow {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.info_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 0.7s ease;
+  pointer-events: none;
+}
+.info_section.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.info_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 90%; /* ✨ instead of 100%, give breathing room */
+  max-width: 1200px; /* ✨ prevent getting too stretched on large screens */
+  margin: 0 auto; /* ✨ center it horizontally */
+}
+.info_content p {
+  flex: 0 0 60%;
+  padding: 2%;
+  box-sizing: border-box; /* ✨ important: padding won't add overflow */
+}
+.info_content .info_image {
+  flex: 0 0 60%;
+  width: 100%;
+  height: auto;
+  padding: 2%;
+  box-sizing: border-box; /* ✨ important: prevent overflow */
+  -o-object-fit: contain;
+     object-fit: contain; /* ✨ makes sure the image fits nicely */
+}
+
+.start_content {
+  flex-direction: column;
+  gap: 1rem;
+}
+.start_content h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+.start_content .start-instruction {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  margin: 0;
+  -webkit-animation: blink 2s infinite;
+          animation: blink 2s infinite;
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+a, a:hover, a:visited {
+  color: forestgreen;
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */
